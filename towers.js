@@ -9,9 +9,11 @@ game_towers.push(new Tower(
 											'Archery tower',
 											level=1,
 											price=50,
-											destroy_price=0,
+											destroy_price=null,
+											fire_range=90,
 											fire_speed=1000,
 											bullet='arrow',
+											bullet_speed=100,
 											trajectory='arc',
 											damage=5,
 											damage_type='phisical',
@@ -25,9 +27,11 @@ game_towers.push(new Tower(
 											'Archery tower',
 											level=2,
 											price=75,
-											destroy_price=0,
+											destroy_price=null,
+											fire_range=100,
 											fire_speed=1000,
 											bullet='arrow',
+											bullet_speed=100,
 											trajectory='arc',
 											damage=7,
 											damage_type='phisical',
@@ -41,11 +45,13 @@ game_towers.push(new Tower(
 											'Mage tower',
 											level=1,
 											price=75,
-											destroy_price=0,
+											destroy_price=null,
+											fire_range=80,
 											fire_speed=1000,
 											bullet='ray',
-											trajectory='straight',
-											damage=10,
+											bullet_speed=300,
+											trajectory='line',
+											damage=5,
 											damage_type='magical',
 											damage_radius=0,
 											affected_targets='all',
@@ -57,9 +63,11 @@ game_towers.push(new Tower(
 											'Bomberman',
 											level=1,
 											price=100,
-											destroy_price=0,
+											destroy_price=null,
+											fire_range=75,
 											fire_speed=1500,
 											bullet='bomb',
+											bullet_speed=50,
 											trajectory='arc',
 											damage=5,
 											damage_type='phisical',
@@ -70,15 +78,17 @@ game_towers.push(new Tower(
 											effect_time=[]
 										));
 
-function Tower(name, level, price, destroy_price, fire_speed, bullet, trajectory, damage, damage_type, damage_radius, affected_targets, effects, effect_damage, effect_time)
+function Tower(name, level, price, destroy_price, fire_range, fire_speed, bullet, bullet_speed, trajectory, damage, damage_type, damage_radius, affected_targets, effects, effect_damage, effect_time)
 {
 	this.name = name;//название
 	this.level = level;//уровень
 	this.price = price;//стоимость
 	this.destroy_price = destroy_price;//стоимость
+	this.fire_range = fire_range;//миллисекунд между выстрелами
 	this.fire_speed = fire_speed;//миллисекунд между выстрелами
 	this.bullet = bullet;//вид снаряда (arrow, ray, bomb)
-	this.trajectory = trajectory;//траектория (straight, arc)
+	this.bullet_speed = bullet_speed;//скорость снаряда, точек в секунду
+	this.trajectory = trajectory;//траектория (line, arc)
 	this.damage = damage;//урон
 	this.damage_type = damage_type;//тип урона (phisical, magical)
 	this.damage_radius = damage_radius;//радиус поражения (0 - поражение только одной цели)
